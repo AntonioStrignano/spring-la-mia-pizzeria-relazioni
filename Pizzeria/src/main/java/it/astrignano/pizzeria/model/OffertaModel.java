@@ -22,7 +22,7 @@ public class OffertaModel {
 	private Integer id;
 	
 	@NotBlank(message = "Il titolo dell'offerta e' obbligatorio. ")
-	@Column(name="nome", nullable =false)
+	@Column(name="titolo", nullable =false)
 	private String titolo;
 	
 	@NotNull(message = "La data di inizio e' obbligatoria. ")

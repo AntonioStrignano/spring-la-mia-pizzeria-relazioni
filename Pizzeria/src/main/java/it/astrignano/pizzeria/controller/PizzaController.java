@@ -1,7 +1,6 @@
 package it.astrignano.pizzeria.controller;
 
 import java.time.LocalDate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import it.astrignano.pizzeria.model.OffertaModel;
 import it.astrignano.pizzeria.model.PizzaModel;
 import it.astrignano.pizzeria.repositoiry.OffertaRepository;
@@ -27,7 +25,7 @@ public class PizzaController {
 	private PizzaRepository pizzaRepo;
 	
 	@Autowired
-	private OffertaRepository offerRepo;
+	private OffertaRepository offertaRepo;
 	
 	
 	@GetMapping("/menu")
@@ -110,19 +108,11 @@ public class PizzaController {
 	public String nuovaOfferta(@PathVariable("id") Integer id, Model model) {
 		
 		OffertaModel offerta = new OffertaModel();
-		offerta.setDataInizio(LocalDate.now());
-		offerta.setPizza(pizzaRepo.getReferenceById(id));
+		offerta.setPizza(pizzaRepo.findById(id).get());
 		
-		return "";
+		model.addAttribute("offerta", offerta);
+		
+		return "/offerte/create";
 	}
 	
-	
-	//----SHOW OFFERTE----
-	@GetMapping("/{id}/offerte")
-	public String listaOfferte(@PathVariable("id") Integer id, Model model) {
-
-		
-		
-		return "/offerte/lista";
-	}
 }
