@@ -18,19 +18,20 @@ public class PizzaModel {
 	@Column(name="id")
 	private Integer id;
 	
-	@NotBlank(message = "Il nome della pizza e' obbligatorio")
+	@NotBlank(message = "Il nome della pizza e' obbligatorio. ")
 	@Column(name="nome", nullable =false)
 	private String nome;
 	
-	@NotBlank(message = "La descr della pizza e' obbligatoria")
+	@NotBlank(message = "La descr della pizza e' obbligatoria. ")
 	@Column(name="descrizione", nullable=false)
 	private String descrizione;
 	
+	@NotBlank(message = "L'url della pizza e' obbligatorio. ")
 	@Column(name = "foto_url", nullable = true)
 	private String fotoUrl;
 	
 	
-	@NotNull(message="Il prezzo e' obbligatorio")
+	@NotNull(message="Il prezzo e' obbligatorio. ")
 	@Column(name="price", nullable = true)
 	private double price;
 

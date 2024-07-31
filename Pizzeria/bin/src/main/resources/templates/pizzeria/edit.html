@@ -1,19 +1,20 @@
  <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<title>add pizza</title>
+<title>edit pizza</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
 	<div class="container">
-		<h1>Aggiungi una nuova pizza</h1>
+		<h1>Modifica pizza</h1>
 		
 		
 		<form id="form-pizza"
-			th:action="@{/pizzeria/create}"
-			method="post"
-			th:object="${pizza}">
+			th:object="${pizza}"
+			th:action="@{/pizzeria/edit/{id} (id=${pizza.id})}"			
+			method="post">
+<!--			th:action="@{|/pizzeria/edit/${pizza.id}|}" -->
 			
 			
 			<div class="mb-3">
@@ -28,11 +29,6 @@
 			</div>
 			
 			<div class="mb-3">
-						  <label for="foto_url" class="form-label">Foto pizza</label>
-						   <input id="foto_url" placeholder="URL foto" type="text" class="form-control" th:field="*{fotoUrl}" ></input>
-						</div>
-			
-			<div class="mb-3">
 						  <label for="prezzo" class="form-label">Prezzo pizza</label>
 						  <input id="prezzo" placeholder="Prezzo Pizza" type="number" step="0.01" class="form-control" th:field="*{price}">
 				</div>
@@ -45,7 +41,7 @@
 					</ul>
 				</div>
 				
-			  <button type="submit" class="btn btn-primary mb-3">Salva</button>
+			  <button type="submit" class="btn btn-primary mb-3">Aggiorna</button>
 		</form>
 	</div>
 	
