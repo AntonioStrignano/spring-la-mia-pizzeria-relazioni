@@ -1,10 +1,13 @@
 package it.astrignano.pizzeria.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -34,6 +37,18 @@ public class PizzaModel {
 	@NotNull(message="Il prezzo e' obbligatorio. ")
 	@Column(name="price", nullable = true)
 	private double price;
+
+	@OneToMany(mappedBy = "pizza")
+	private List<OffertaModel> offerte;
+	
+	
+	public List<OffertaModel> getOfferte() {
+		return offerte;
+	}
+
+	public void setOfferte(List<OffertaModel> offerte) {
+		this.offerte = offerte;
+	}
 
 	public Integer getId() {
 		return id;
