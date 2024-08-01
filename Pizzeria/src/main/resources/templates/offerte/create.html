@@ -16,6 +16,8 @@
 			th:object="${offerta}">
 			
 			
+			<input type="hidden" th:field="*{pizza}" id="pizza">
+			
 			<div class="mb-3">
 			  <label for="titolo" class="form-label">Titolo offerta</label>
 			  <input id="titolo" placeholder="Titolo Offerta" type="text" class="form-control" th:field="*{titolo}">

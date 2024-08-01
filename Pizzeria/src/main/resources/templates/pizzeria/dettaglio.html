@@ -31,7 +31,16 @@
 					<td th:text="${offerta.titolo}"></td>
 					<td th:text="${offerta.dataInizio}"></td>
 					<td th:text="${offerta.dataFine}"></td>
-					<td></td>
+					<td>
+						<form th:action="@{|/offerte/delete/${offerta.id}|}"
+										method="post">
+						<button class="btn btn-danger" type="submit" id="submitButton"
+						th:data-confirm-delete="|Sei sicuro di voler cancellare l'offerta?|"
+						th:onclick="if(!confirm(this.getAttribute('data-confirm-delete'))) return false">
+							Elimina
+						</button>
+						</form>
+					</td>
 				</tr>				
 			</tbody>
 		</table>

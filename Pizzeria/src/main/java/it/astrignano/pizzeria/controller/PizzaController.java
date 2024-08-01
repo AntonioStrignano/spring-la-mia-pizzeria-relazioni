@@ -107,8 +107,9 @@ public class PizzaController {
 	@GetMapping("/{id}/offerte/create")
 	public String nuovaOfferta(@PathVariable("id") Integer id, Model model) {
 		
+		PizzaModel pizza = pizzaRepo.findById(id).get();
 		OffertaModel offerta = new OffertaModel();
-		offerta.setPizza(pizzaRepo.findById(id).get());
+		offerta.setPizza(pizza);
 		
 		model.addAttribute("offerta", offerta);
 		

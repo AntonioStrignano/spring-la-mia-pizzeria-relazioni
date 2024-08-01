@@ -25,6 +25,8 @@ public class OffertaController {
 	@Autowired
 	private OffertaRepository offertaRepo;
 	
+	
+//	-----CREATE-----
 	@PostMapping("/create")
 	public String storeOfferta(@Valid @ModelAttribute("offerta") OffertaModel offerta,
 			BindingResult bindingResult,  Model model) {
@@ -34,7 +36,18 @@ public class OffertaController {
 		}
 		offertaRepo.save(offerta);
 		
-		return"redirect:/pizzeria/dettaglio/" + offerta.getPizza().getId() + "/offerte";
+		return"redirect:/pizzeria/dettaglio/" + offerta.getPizza().getId();
 	}
+
+	
+	//------DELETE-------
+		@PostMapping("/delete/{id}")
+		 public String delete(@PathVariable ("id") Integer id) {
+			 
+			offertaRepo.deleteById(id);
+			
+			 return "redirect:/pizzeria/menu";
+		 }
+		
 	
 }
