@@ -24,8 +24,8 @@ public class IngredienteModel {
 	private Integer id;
 	
 	@NotBlank(message = "Il nome dell'ingrediente e' obbligatorio. ")
-	@Column(name="ingrediente", nullable =false)
-	private String ingrediente;
+	@Column(name="nome", nullable =false)
+	private String nome;
 	
 	@ManyToMany(mappedBy="ingredienti")
 	private List<PizzaModel> pizze;
@@ -38,16 +38,6 @@ public class IngredienteModel {
 		this.id = id;
 	}
 
-
-
-	public String getIngrediente() {
-		return ingrediente;
-	}
-
-	public void setIngrediente(String ingrediente) {
-		this.ingrediente = ingrediente;
-	}
-
 	public List<PizzaModel> getPizze() {
 		return pizze;
 	}
@@ -55,5 +45,15 @@ public class IngredienteModel {
 	public void setPizze(List<PizzaModel> pizze) {
 		this.pizze = pizze;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	
 	
 }

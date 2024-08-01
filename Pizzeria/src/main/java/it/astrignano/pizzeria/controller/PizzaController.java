@@ -1,6 +1,5 @@
 package it.astrignano.pizzeria.controller;
 
-import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,10 +22,6 @@ public class PizzaController {
 	
 	@Autowired
 	private PizzaRepository pizzaRepo;
-	
-	@Autowired
-	private OffertaRepository offertaRepo;
-	
 	
 	@GetMapping("/menu")
 	public String pizze(Model model) {
