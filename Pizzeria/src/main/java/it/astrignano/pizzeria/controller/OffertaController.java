@@ -40,14 +40,40 @@ public class OffertaController {
 	}
 
 	
-	//------DELETE-------
+//--------DELETE---------
 		@PostMapping("/delete/{id}")
-		 public String delete(@PathVariable ("id") Integer id) {
-			 
+		 public String deleteOfferta(@PathVariable ("id") Integer id, OffertaModel offerta) {
+			
+			Integer pizzaId = offertaRepo.findById(id).get().getPizza().getId();
 			offertaRepo.deleteById(id);
 			
-			 return "redirect:/pizzeria/menu";
+			return "redirect:/pizzeria/dettaglio/" + pizzaId;
 		 }
 		
+		
+//----------EDIT---------
+		@GetMapping("/edit/{id}")
+		public String editOfferta(@PathVariable("id") Integer id, Model model) {
+			
+			OffertaModel offerta = offertaRepo.findById(id).get();
+			model.addAttribute("offerta", offerta);
+			model.addAttribute("editMode", true);
+			
+			return"/offerte/create";
+		}
+		
+		@PostMapping("/edit/{id}")
+		public String storeEditOfferta(
+				@Valid @ModelAttribute("offerta") OffertaModel offerta, Model model,
+				BindingResult bindingResult) {
+
+			if (bindingResult.hasErrors()){
+				return "/offerte/create";
+			}
+			
+			offertaRepo.save(offerta);
+			
+			return "redirect:/pizzeria/dettaglio/" + offerta.getPizza().getId();
+		}
 	
 }

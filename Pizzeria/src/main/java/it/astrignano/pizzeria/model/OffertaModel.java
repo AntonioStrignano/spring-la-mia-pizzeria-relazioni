@@ -74,6 +74,11 @@ public class OffertaModel {
 		return id;
 	}
 
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "OffertaModel [id=" + id + ", titolo=" + titolo + ", dataInizio=" + dataInizio + ", dataFine=" + dataFine

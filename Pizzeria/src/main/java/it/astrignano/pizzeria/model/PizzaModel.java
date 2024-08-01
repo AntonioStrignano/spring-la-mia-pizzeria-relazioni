@@ -1,12 +1,14 @@
 package it.astrignano.pizzeria.model;
 
 import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -41,6 +43,25 @@ public class PizzaModel {
 	@OneToMany(mappedBy = "pizza")
 	private List<OffertaModel> offerte;
 	
+	@ManyToMany()
+	@JoinTable(
+			name = "pizza_ingredienti",
+			joinColumns = @JoinColumn(name = "id_pizza"),
+			inverseJoinColumns = @JoinColumn(name = "id_ingrediente")
+			)
+	private List<IngredienteModel> ingredienti;
+	
+	
+	
+// -------GETTER E SETTER--------
+	public List<IngredienteModel> getIngredienti() {
+		return ingredienti;
+	}
+
+	public void setIngredienti(List<IngredienteModel> ingredienti) {
+		this.ingredienti = ingredienti;
+	}
+
 	
 	public List<OffertaModel> getOfferte() {
 		return offerte;
