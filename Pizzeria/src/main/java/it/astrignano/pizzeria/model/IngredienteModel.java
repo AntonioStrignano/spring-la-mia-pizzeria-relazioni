@@ -30,12 +30,21 @@ public class IngredienteModel {
 	@ManyToMany(mappedBy="ingredienti")
 	private List<PizzaModel> pizze;
 
+//-------GETTER E SETTER-------
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public List<PizzaModel> getPizze() {
@@ -46,13 +55,6 @@ public class IngredienteModel {
 		this.pizze = pizze;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 	
 	
 	

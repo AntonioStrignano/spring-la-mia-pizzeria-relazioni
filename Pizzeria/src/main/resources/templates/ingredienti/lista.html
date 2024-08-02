@@ -8,7 +8,10 @@
 <body>
 	<h1 >Ingredienti</h1>
 	
-	<div class="container d-flex">	
+	<div class="container">	
+		<div class="d-flex">
+	<!-- LISTA -->
+	<div class="col">
 		<div th:unless="${ingredienti.isEmpty()}">
 						<table class="table">
 							<thead>
@@ -23,9 +26,9 @@
 									<td th:text="${ingr.id}"></td>
 									<td th:text="${ingr.nome}"></td>
 									<td class="d-flex">
-										<a class="btn btn-primary" th:href="@{|/ingredienti/edit/${id}|}"><i
+										<a class="btn btn-primary" th:href="@{|/ingredienti/edit/${ingr.id}|}"><i
 												class="bi bi-pencil"></i></a>
-										<form th:action="@{/ingredienti/delete/${id}|}" method="post">
+										<form th:action="@{|/ingredienti/delete/${ingr.id}|}" method="post">
 											<button class="btn btn-danger" type="submit" id="submitButton"
 												th:data-confirm-delete="|Sei sicuro di voler cancellare l'ingrediente?|"
 												th:onclick="if(!confirm(this.getAttribute('data-confirm-delete'))) return false">
@@ -37,14 +40,16 @@
 							</tbody>
 						</table>
 					</div>
-		</div>	
 		
 		<div th:if="${ingredienti.isEmpty()}">
 			<p>Non ci sono ingredienti registrati</p>
 		</div>
 	</div>
+
 	
-	<div class="container">
+	
+	<!-- FORM -->
+	<div class="col">
 		<form
 		id="form-ingr-create"
 		th:action="@{/ingredienti/create}"
@@ -63,8 +68,11 @@
 		</div>
 	
 	</form>
+	<a href="/pizzeria/menu">Torna al menù</a>
 	</div>
 	
+		</div>
+		</div>
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
