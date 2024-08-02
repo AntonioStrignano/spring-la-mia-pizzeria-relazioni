@@ -24,7 +24,7 @@ public class PizzaModel {
 	private Integer id;
 	
 	@NotBlank(message = "Il nome della pizza e' obbligatorio. ")
-	@Column(name="nome", nullable =false)
+	@Column(name="nomeIngr", nullable =false)
 	private String nome;
 	
 	@NotBlank(message = "La descr della pizza e' obbligatoria. ")
@@ -110,6 +110,8 @@ public class PizzaModel {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	
 
 	@Override
 	public String toString() {

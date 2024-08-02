@@ -36,6 +36,17 @@
 						  <label for="prezzo" class="form-label">Prezzo pizza</label>
 						  <input id="prezzo" placeholder="Prezzo Pizza" type="number" step="0.01" class="form-control" th:field="*{price}">
 				</div>
+				
+				
+			<div class="mb-3">
+				<h6>Seleziona gli ingredienti</h6>
+				
+				<th:block th:each="ingr:${ingRepo}">
+					<input type="checkbox" name="ingrediente" th:value="${ingr.id}"	th:field="*{ingredienti}">
+					<label th:text="${ingr.nome}"></label>
+				</th:block>
+				
+			</div>
 			
 				<div th:if="${#fields.hasAnyErrors()}">
 					<ul>
